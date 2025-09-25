@@ -1,5 +1,3 @@
-# Laravel Senior Certification Exam: Service Providers
-
 ### Senior Laravel Certification Questions: Service Providers
 
 #### Question 1
