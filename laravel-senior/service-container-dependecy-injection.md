@@ -1,4 +1,6 @@
-### Question 1
+### Senior Laravel Certification Questions: Service Container (Dependency Injection)
+
+#### Question 1
 Scenario: You need to register a PaymentGateway class in the Service Container so that the same instance is returned every time it is resolved. Which method should you use in your AppServiceProvider?
 
 * a) $this->app->bind(PaymentGateway::class, function ($app) { return new PaymentGateway(); });
@@ -18,7 +20,7 @@ singleton registers a "recipe" for creating an object the first time it is resol
 
 make is used to resolve (create) an instance, not to register it.==
 
-### Question 2
+#### Question 2
 What is the main difference between the bind and singleton methods of the Service Container?
 
 * a) bind is for interfaces, while singleton is for concrete classes.
@@ -32,7 +34,7 @@ Correct Answer: b)
 
 The fundamental distinction between the two is the lifecycle of the resolved object. bind results in a "transient" instance (new every time), while singleton results in a single instance throughout the entire request lifecycle (or application lifecycle, depending on the context).
 
-### Question 3
+#### Question 3
 In which method of a Service Provider is the correct place to register bindings in the container?
 
 * a) boot()
@@ -46,7 +48,7 @@ Correct Answer: b)
 
 The register() method is designed specifically for registering bindings into the Service Container. You should never attempt to resolve any dependencies within the register method. The boot() method is executed after all providers have been registered and is the ideal place to interact with already registered services.
 
-### Question 4
+#### Question 4
 Scenario: You have a ReportGenerator interface and two implementations: PdfReportGenerator and CsvReportGenerator. In a specific controller (FinancialController), you need ReportGenerator to resolve to PdfReportGenerator, but everywhere else, it should resolve to CsvReportGenerator. How do you set this up?
 
 * a) Using the extend method.
@@ -69,7 +71,7 @@ $this->app->when(FinancialController::class)
 
 ```
 
-### Question 5
+#### Question 5
 What does "Inversion of Control" (IoC) mean in the context of Laravel's Service Container?
 
 * a) The developer manually controls the creation of all objects.
@@ -83,7 +85,7 @@ Correct Answer: c)
 
 IoC is a design principle where the framework (in this case, Laravel's Service Container) takes control of the application's flow, especially concerning object creation and dependency injection. Instead of your class creating its own dependencies with new MyDependency(), the container provides them to it.
 
-### Question 6
+#### Question 6
 Scenario: You need to inject a primitive value (like an API key string) into the constructor of an ApiService class. How can you achieve this through the Service Container?
 
 * a) It's not possible; primitive values must be passed manually.
@@ -119,7 +121,7 @@ $this->app->bind(ApiService::class, function ($app) {
 
 Option 'c' is generally preferred as it is more flexible if the class has other dependencies that can be autowired.
 
-### Question 7
+#### Question 7
 What is the purpose of the tag method in the Service Container?
 
 * a) To create an alias for a binding.
@@ -133,7 +135,7 @@ Correct Answer: b)
 
 Tagging is a way to organize and resolve a group of related implementations. For example, you could have several Rule classes and tag them all as rules. Later, you can use $app->tagged('rules') to get an array containing all the registered rule instances.
 
-### Question 8
+#### Question 8
 What is the difference between app()->make() and resolve()?
 
 * a) make() only works for singletons, while resolve() works for any binding.
@@ -147,7 +149,7 @@ Correct Answer: b)
 
 The resolve() function is simply a shortcut for app()->make(). There is no functional difference between them. The choice of which to use is purely a matter of coding style preference. Both can accept additional parameters, and both will throw an exception if resolution fails.
 
-### Question 9
+#### Question 9
 Scenario: A UserService class depends on UserRepository. Neither of them has been explicitly registered in the Service Container. What happens when you try to inject UserService into a controller's constructor?
 
 ```
@@ -170,7 +172,7 @@ Correct Answer: c)
 
 This is the power of Laravel's "automatic resolution" or "autowiring". If a class has no explicit binding in the container, it will use PHP's Reflection API to inspect its constructor dependencies and recursively try to resolve them. This works as long as the dependencies are concrete classes or interfaces with defined bindings.
 
-### Question 10
+#### Question 10
 What is the purpose of the extend method of the Service Container?
 
 * a) To completely replace an existing binding with a new one.
@@ -192,7 +194,7 @@ $this->app->extend(SomeService::class, function ($service, $app) {
 });
 ```
 
-### Question 11
+#### Question 11
 What is a circular dependency, and how does Laravel handle it?
 
 * a) It's when a service is registered twice. Laravel overwrites the first one.
@@ -206,7 +208,7 @@ Correct Answer: b)
 
 A circular dependency (A -> B -> A) creates an infinite resolution loop that the container cannot solve. This usually indicates a design problem in your code's architecture. The solution is to refactor the classes to break the dependency, perhaps by introducing a third class or using method injection instead of constructor injection.
 
-### Question 12
+#### Question 12
 Which Laravel helper can be used to execute a method and automatically inject its dependencies?
 
 * a) inject()
@@ -231,7 +233,7 @@ $controller->someMethod($myService);
 app()->call([$controller, 'someMethod']);
 ```
 
-### Question 13
+#### Question 13
 Scenario: You have the following binding:
 $this->app->instance('api_key', 'ABC-123');
 And a class:
@@ -257,7 +259,7 @@ Correct Answer: b)
 
 The container cannot guess that the constructor's $apiKey variable should be filled with the value from the api_key binding. Autowiring for primitive types does not work this way. You need to be explicit, either by using Contextual Binding (when...needs...give) or by defining a full binding for the ApiClient class.
 
-### Question 14
+#### Question 14
 When is it appropriate to use the instance method instead of singleton?
 
 * a) When the object's creation is very complex and cannot be in a closure.
@@ -271,7 +273,7 @@ Correct Answer: c)
 
 The primary use case for instance is when you create an object at an early point in your code (perhaps during the application bootstrap) and need to make that exact same instance available to the rest of the application via the container. For example, $app->instance('app', $app); is how Laravel itself registers the application instance in the container.
 
-### Question 15
+#### Question 15
 You need to run some initialization code on an object every time it is resolved from the container. Which method would you use?
 
 * a) The boot method of the Service Provider.
@@ -295,7 +297,7 @@ $this->app->resolving(MyService::class, function ($service, $app) {
 
 While the constructor also runs code on creation, the resolving event decouples this initialization logic from the class itself.
 
-### Question 16
+#### Question 16
 What does the makeWith method allow you to do?
 
 * a) Resolve an instance using a specific Service Provider.
@@ -316,7 +318,7 @@ makeWith (or make with a second argument) is useful when the container can resol
 $order = $app->makeWith(Order::class, ['amount' => 100]);
 ```
 
-### Question 17
+#### Question 17
 What is the purpose of the array returned by the provides() method in a Service Provider?
 
 * a) To list all the bindings that the provider registers.
@@ -330,7 +332,7 @@ Correct Answer: c)
 
 This method is used in conjunction with the $defer = true; property in the Service Provider. It tells Laravel which bindings the provider registers. With this, Laravel doesn't need to load the provider on every request, only on the first time one of the services listed in provides() is resolved. This is known as "Deferred Providers" and improves performance.
 
-### Question 18
+#### Question 18
 Scenario: You have a LoggerInterface and a binding for the FileLogger class. In a specific job, you want to use DatabaseLogger instead. What is the cleanest way to resolve DatabaseLogger inside your job's handle() method without changing the container globally?
 
 * a) $logger = new DatabaseLogger();
@@ -352,7 +354,7 @@ app()->get(LoggerInterface::class) would resolve to FileLogger because of the gl
 
 Changing the global binding from within the job is bad practice and can cause unexpected side effects.
 
-### Question 19
+#### Question 19
 What does it mean to say that Laravel's Service Container has "zero-configuration resolution"?
 
 * a) You don't need to configure anything in Laravel to use the container.
@@ -367,7 +369,7 @@ Correct Answer: b)
 This term refers to the container's "autowiring" capability. Thanks to ```
 // PHP's reflection, the container can "look" at class constructors and figure out how to instantiate them automatically, as long as the dependencies are themselves resolvable. This eliminates the need to manually register every single class you create.
 
-### Question 20
+#### Question 20
 Which method can be used to check if a given type (abstraction) has been registered in the container?
 
 * a) isBound()
@@ -381,7 +383,7 @@ Correct Answer: d)
 
 Laravel's container offers several slightly different named methods that serve the same purpose of checking for the existence of a binding. bound(), has(), and isBound() are all valid methods on the Illuminate\Container\Container class for this purpose.
 
-### Question 21
+#### Question 21
 Scenario: You have the following code in a Service Provider:
 
 ```
@@ -404,7 +406,7 @@ Correct Answer: d)
 
 If you register the same abstraction (class or interface) multiple times, the last registered binding will prevail. In this case, the bind overwrites the previous singleton, and the result will be a new instance of MyService('config') on every resolution.
 
-### Question 22
+#### Question 22
 What is the main advantage of injecting an interface instead of a concrete class into a constructor?
 
 * a) It's faster for Laravel to resolve interfaces.
@@ -418,7 +420,7 @@ Correct Answer: c)
 
 This is one of the fundamental principles of object-oriented software design, known as the "Dependency Inversion Principle" (the 'D' in SOLID). By depending on abstractions (interfaces) instead of concrete implementations, your code becomes more flexible, modular, and easier to test, as you can easily "mock" or swap the implementation behind the interface.
 
-### Question 23
+#### Question 23
 You want to register a service, but its creation depends on another service that might not have been registered yet. What is the safest place to perform this registration?
 
 * a) In the constructor of a Service Provider.
@@ -432,7 +434,7 @@ Correct Answer: c)
 
 The boot method of all Service Providers is executed after the register method of ALL providers has already run. This guarantees that by the time your boot code is executed, all of the application's bindings are already available in the container. Trying to resolve a service inside register is dangerous because there is no guarantee that the service you depend on has been registered yet.
 
-### Question 24
+#### Question 24
 How does Laravel's container handle dependency injection into Controller methods called by the router?
 
 * a) It doesn't; you must resolve dependencies manually inside the method.
@@ -446,7 +448,7 @@ Correct Answer: c)
 
 This is known as "Method Injection". Laravel's router uses the container to call controller methods. When doing so, it inspects the method's signature, and for each parameter with a type-hint (e.g., MyService $service), it attempts to resolve that type from the container and inject it as an argument. This works not only for service dependencies but also for route model binding, the Request object, etc.
 
-### Question 25
+#### Question 25
 Scenario: You have a complex class that needs several configuration steps after being instantiated. What is the most appropriate design pattern to manage this creation using the Service Container?
 
 * a) Put all the configuration logic in the class's constructor.
