@@ -4,10 +4,10 @@
 
 > Which mandatory abstract method must be implemented when creating a custom Facade class that extends `Illuminate\Support\Facades\Facade`?
 
-A) `getFacadeRoot()`
-B) `resolveFacadeInstance()`
-C) `getFacadeAccessor()`
-D) `bindInstance()`
+- A) `getFacadeRoot()`
+- B) `resolveFacadeInstance()`
+- C) `getFacadeAccessor()`
+- D) `bindInstance()`
 
 ---
 **Explanation:**
@@ -28,10 +28,10 @@ When creating a custom Facade in Laravel, you must extend the `Illuminate\Suppor
 > ```
 > How should the `getFacadeAccessor()` method of a custom Facade (`MyCustomClassFacade`) be implemented to resolve this class?
 
-A) `protected static function getFacadeAccessor() { return \App\Services\MyCustomClass::class; }`
-B) `protected static function getFacadeAccessor() { return 'my-custom-class'; }`
-C) `protected static function getFacadeAccessor() { return new \App\Services\MyCustomClass(); }`
-D) `protected static function getFacadeAccessor() { return resolve('MyCustomClass'); }`
+- A) `protected static function getFacadeAccessor() { return \App\Services\MyCustomClass::class; }`
+- B) `protected static function getFacadeAccessor() { return 'my-custom-class'; }`
+- C) `protected static function getFacadeAccessor() { return new \App\Services\MyCustomClass(); }`
+- D) `protected static function getFacadeAccessor() { return resolve('MyCustomClass'); }`
 
 ---
 **Explanation:**
@@ -46,10 +46,10 @@ The `getFacadeAccessor()` method must return the binding key registered in the S
 
 > What does Laravel do internally the first time you call a static method on a Facade, such as `Cache::get('key')`?
 
-A) It creates a new instance of the Facade class and calls the method on it.
-B) It uses the `__callStatic()` magic method to resolve the object instance from the Service Container, and then calls the desired method on that instance.
-C) It reflects the Facade class to find a matching static method and executes it.
-D) It looks for a global helper function with the same name and executes it.
+- A) It creates a new instance of the Facade class and calls the method on it.
+- B) It uses the `__callStatic()` magic method to resolve the object instance from the Service Container, and then calls the desired method on that instance.
+- C) It reflects the Facade class to find a matching static method and executes it.
+- D) It looks for a global helper function with the same name and executes it.
 
 ---
 **Explanation:**
@@ -64,10 +64,10 @@ Laravel's Facades provide a "static" interface to classes that are available in 
 
 > What is the primary advantage of using Facades over injecting dependencies directly into a class's constructor?
 
-A) Facades offer significantly better performance.
-B) Facades provide a more concise and expressive syntax, especially in contexts that do not easily support dependency injection (like `routes/web.php`).
-C) Facades are the only way to access Laravel's core services.
-D) Facades avoid coupling to the Service Container.
+- A) Facades offer significantly better performance.
+- B) Facades provide a more concise and expressive syntax, especially in contexts that do not easily support dependency injection (like `routes/web.php`).
+- C) Facades are the only way to access Laravel's core services.
+- D) Facades avoid coupling to the Service Container.
 
 ---
 **Explanation:**
@@ -82,10 +82,10 @@ The main advantage of Facades is convenience and expressive syntax. While depend
 
 > What are "Real-time Facades" in Laravel?
 
-A) They are Facades that are compiled at runtime for better performance.
-B) They are a way to use any class as a Facade without creating a dedicated Facade class, by prefixing the class with `Facades\`.
-C) They are Facades that update their data in real-time using WebSockets.
-D) They are Facades that can only be used within tests to simulate real-time interactions.
+- A) They are Facades that are compiled at runtime for better performance.
+- B) They are a way to use any class as a Facade without creating a dedicated Facade class, by prefixing the class with `Facades\`.
+- C) They are Facades that update their data in real-time using WebSockets.
+- D) They are Facades that can only be used within tests to simulate real-time interactions.
 
 ---
 **Explanation:**
@@ -100,10 +100,10 @@ D) They are Facades that can only be used within tests to simulate real-time int
 
 > When testing code that uses the `Mail` Facade, what is the recommended way to prevent sending real emails and instead assert which emails would have been sent?
 
-A) Use `Mail::shouldReceive('send')->once();`
-B) Use `Mail::fake();`
-C) Set the mail driver to `log` in the `.env.testing` file.
-D) Create a mock of the `Mailer` class using Mockery.
+- A) Use `Mail::shouldReceive('send')->once();`
+- B) Use `Mail::fake();`
+- C) Set the mail driver to `log` in the `.env.testing` file.
+- D) Create a mock of the `Mailer` class using Mockery.
 
 ---
 **Explanation:**
@@ -118,10 +118,10 @@ Laravel provides a very convenient `fake()` method on several of its Facades (`M
 
 > Which of the following statements about Facades and testing is the most accurate?
 
-A) Code that uses Facades is impossible to test.
-B) Facades can be easily mocked using methods like `shouldReceive()`, allowing for isolation of the code under test.
-C) You must always use dependency injection instead of Facades to make code testable.
-D) Testing with Facades requires setting up a full test database.
+- A) Code that uses Facades is impossible to test.
+- B) Facades can be easily mocked using methods like `shouldReceive()`, allowing for isolation of the code under test.
+- C) You must always use dependency injection instead of Facades to make code testable.
+- D) Testing with Facades requires setting up a full test database.
 
 ---
 **Explanation:**
@@ -136,10 +136,10 @@ One of the most powerful features of Facades is their testability. Since Facades
 
 > What is the main difference between a Facade and a global helper function (like `cache()` or `view()`)?
 
-A) There is no difference; helpers are just aliases for Facades.
-B) Facades are more performant than helpers.
-C) Facades offer a static, object-oriented syntax, while helpers are procedural function calls. Testability is also a key differentiator, with Facades having built-in mocking methods like `shouldReceive`.
-D) Helpers can be used anywhere, while Facades can only be used in Controllers.
+- A) There is no difference; helpers are just aliases for Facades.
+- B) Facades are more performant than helpers.
+- C) Facades offer a static, object-oriented syntax, while helpers are procedural function calls. Testability is also a key differentiator, with Facades having built-in mocking methods like `shouldReceive`.
+- D) Helpers can be used anywhere, while Facades can only be used in Controllers.
 
 ---
 **Explanation:**
@@ -154,10 +154,10 @@ While both can achieve similar goals (accessing Laravel services), they represen
 
 > If you execute the method `DB::getFacadeRoot()`, what will it return?
 
-A) The class name `Illuminate\Database\DatabaseManager`.
-B) An instance of the `Illuminate\Database\DatabaseManager` class.
-C) An instance of the default database connection.
-D) The string `'db'`.
+- A) The class name `Illuminate\Database\DatabaseManager`.
+- B) An instance of the `Illuminate\Database\DatabaseManager` class.
+- C) An instance of the default database connection.
+- D) The string `'db'`.
 
 ---
 **Explanation:**
@@ -172,10 +172,10 @@ The `getFacadeRoot()` method is an actual method on the base `Facade` class that
 
 > In which scenario could the use of a Facade be considered a "code smell" or bad practice?
 
-A) In a route file (`routes/web.php`) to define an endpoint.
-B) In a unit test to mock an external dependency.
-C) Injecting the underlying class in a constructor, like `public function __construct(AuthManager $auth)`.
-D) Using the `Log` Facade extensively inside a service class that has many other dependencies and complex business logic.
+- A) In a route file (`routes/web.php`) to define an endpoint.
+- B) In a unit test to mock an external dependency.
+- C) Injecting the underlying class in a constructor, like `public function __construct(AuthManager $auth)`.
+- D) Using the `Log` Facade extensively inside a service class that has many other dependencies and complex business logic.
 
 ---
 **Explanation:**
@@ -190,10 +190,10 @@ Facades shine for convenience in places where dependency injection is cumbersome
 
 > What happens if a Facade's `getFacadeAccessor()` returns the name of a class that is not explicitly registered in the Service Container?
 
-A) Laravel will throw a `BindingResolutionException`.
-B) Laravel will attempt to resolve the class using its auto-wiring mechanism, if the class has resolvable dependencies.
-C) The Facade call will silently return `null`.
-D) Laravel will create an instance of the Facade class itself.
+- A) Laravel will throw a `BindingResolutionException`.
+- B) Laravel will attempt to resolve the class using its auto-wiring mechanism, if the class has resolvable dependencies.
+- C) The Facade call will silently return `null`.
+- D) Laravel will create an instance of the Facade class itself.
 
 ---
 **Explanation:**
@@ -208,10 +208,10 @@ Laravel's Service Container is powerful enough to instantiate classes that haven
 
 > Which Artisan command can be used to clear the cache for "Real-time Facades"?
 
-A) `php artisan cache:clear`
-B) `php artisan config:clear`
-C) `php artisan view:clear`
-D) `php artisan clear-compiled`
+- A) `php artisan cache:clear`
+- B) `php artisan config:clear`
+- C) `php artisan view:clear`
+- D) `php artisan clear-compiled`
 
 ---
 **Explanation:**
@@ -226,18 +226,19 @@ When you use "Real-time Facades", Laravel generates proxy classes for them and s
 
 > How can you find out which class is behind a Facade like `Cache`?
 
-A) By reading the source code comments of the `Illuminate\Support\Facades\Cache` class.
-B) By using `dd(get_class(Cache::getFacadeRoot()));`.
-C) By looking up the key returned by `Cache::getFacadeAccessor()` in the registered service providers.
-D) All of the above are valid ways.
+- A) By reading the source code comments of the `Illuminate\Support\Facades\Cache` class.
+- B) By using `dd(get_class(Cache::getFacadeRoot()));`.
+- C) By looking up the key returned by `Cache::getFacadeAccessor()` in the registered service providers.
+- D) All of the above are valid ways.
 
 ---
 **Explanation:**
 
 All three options are valid methods for investigating the underlying class of a Facade.
-A) The DocBlock at the top of the Facade class (`Illuminate\Support\Facades\Cache`) usually has a `@see` annotation that points to the real class.
-B) Calling `Cache::getFacadeRoot()` resolves the object instance from the container, and `get_class()` then returns the class name of that object. This is the most programmatic and definitive way.
-C) The `getFacadeAccessor()` will give you the binding key (in this case, `'cache'`). You can then search for this key in the registered Service Providers (in `config/app.php`) to find where and how it is registered.
+- A) The DocBlock at the top of the Facade class (`Illuminate\Support\Facades\Cache`) usually has a `@see` annotation that points to the real class.
+- B) Calling `Cache::getFacadeRoot()` resolves the object instance from the container, and `get_class()` then returns the class name of that object. This is the most programmatic and definitive way.
+- C) The `getFacadeAccessor()` will give you the binding key (in this case, `'cache'`). You can then search for this key in the registered Service Providers (in `config/app.php`) to find where and how it is registered.
+- D) All of the above are valid ways.
 
 **Correct Answer:** **D) All of the above are valid ways.**
 
@@ -247,10 +248,10 @@ C) The `getFacadeAccessor()` will give you the binding key (in this case, `'cach
 
 > The statement "Facades are an anti-pattern because they violate Dependency Inversion and use global static methods" is a common criticism. What is the best counter-argument from the Laravel point of view?
 
-A) The statement is correct; Facades should be avoided.
-B) Facades do not use real static methods; they use the `__callStatic` magic method, and the underlying instance is fully swappable and testable, which aligns with the benefits of Dependency Inversion.
-C) The performance gained by using Facades outweighs the architectural drawbacks.
-D) Facades are necessary for the framework's core functionality and cannot be replaced.
+- A) The statement is correct; Facades should be avoided.
+- B) Facades do not use real static methods; they use the `__callStatic` magic method, and the underlying instance is fully swappable and testable, which aligns with the benefits of Dependency Inversion.
+- C) The performance gained by using Facades outweighs the architectural drawbacks.
+- D) Facades are necessary for the framework's core functionality and cannot be replaced.
 
 ---
 **Explanation:**
@@ -280,10 +281,10 @@ The main misunderstanding in the criticism of Facades is thinking they are the s
 > ```
 > What does the `Http::fake()` call do in this context?
 
-A) It prevents all outgoing HTTP calls from the application and allows specific responses to be simulated for matching URLs.
-B) It sets up a real, but local, HTTP server to respond to requests.
-C) It only logs the HTTP calls but still allows them to proceed to the real destination.
-D) It throws an exception whenever an HTTP call is attempted.
+- A) It prevents all outgoing HTTP calls from the application and allows specific responses to be simulated for matching URLs.
+- B) It sets up a real, but local, HTTP server to respond to requests.
+- C) It only logs the HTTP calls but still allows them to proceed to the real destination.
+- D) It throws an exception whenever an HTTP call is attempted.
 
 ---
 **Explanation:**
@@ -298,10 +299,10 @@ Laravel's `Http` Facade has a powerful faking system for testing. `Http::fake()`
 
 > What is the purpose of the `aliases` array in the `config/app.php` file in relation to Facades?
 
-A) It maps short Facade names (e.g., 'Cache') to their fully qualified namespaces (e.g., `Illuminate\Support\Facades\Cache`).
-B) It defines which Facades should be loaded on every request.
-C) It replaces the need to implement the `getFacadeAccessor()` method.
-D) It is only used for debug mode and has no effect in production.
+- A) It maps short Facade names (e.g., 'Cache') to their fully qualified namespaces (e.g., `Illuminate\Support\Facades\Cache`).
+- B) It defines which Facades should be loaded on every request.
+- C) It replaces the need to implement the `getFacadeAccessor()` method.
+- D) It is only used for debug mode and has no effect in production.
 
 ---
 **Explanation:**
@@ -316,10 +317,10 @@ The `'aliases'` array in `config/app.php` is a convenience mechanism of PHP's au
 
 > If you need to call a method on a class that is normally accessed via a Facade, but you have an instance of that class in a variable, how would you make the call?
 
-A) It's impossible; you must always use the Facade's static interface.
-B) `MyFacade::callMethodOnInstance($instance, 'methodName', $args)`.
-C) Simply call the method on the object instance as you would with any other PHP object: `$instance->methodName($args)`.
-D) `MyFacade::swap($instance)->methodName($args)`.
+- A) It's impossible; you must always use the Facade's static interface.
+- B) `MyFacade::callMethodOnInstance($instance, 'methodName', $args)`.
+- C) Simply call the method on the object instance as you would with any other PHP object: `$instance->methodName($args)`.
+- D) `MyFacade::swap($instance)->methodName($args)`.
 
 ---
 **Explanation:**
@@ -334,10 +335,10 @@ A Facade is just a proxy to a real object instance. If you already have the inst
 
 > What does the `Facade::swap($mock)` method do?
 
-A) It permanently replaces the instance in the Service Container with the `$mock` instance.
-B) It replaces the instance resolved by the Facade with the `$mock` instance for the current request or test cycle only.
-C) It creates a copy of the original Facade and replaces it with `$mock`.
-D) It checks if the Facade's instance is of the same type as `$mock`.
+- A) It permanently replaces the instance in the Service Container with the `$mock` instance.
+- B) It replaces the instance resolved by the Facade with the `$mock` instance for the current request or test cycle only.
+- C) It creates a copy of the original Facade and replaces it with `$mock`.
+- D) It checks if the Facade's instance is of the same type as `$mock`.
 
 ---
 **Explanation:**
@@ -352,10 +353,10 @@ D) It checks if the Facade's instance is of the same type as `$mock`.
 
 > When creating a Facade for a Laravel package, where would you typically register the service binding in the Service Container?
 
-A) In the package's `config/app.php` file.
-B) In the `boot()` method of the package's Service Provider.
-C) In the `register()` method of the package's Service Provider.
-D) Directly in the Facade's class constructor.
+- A) In the package's `config/app.php` file.
+- B) In the `boot()` method of the package's Service Provider.
+- C) In the `register()` method of the package's Service Provider.
+- D) Directly in the Facade's class constructor.
 
 ---
 **Explanation:**
@@ -370,10 +371,10 @@ The Laravel convention is to use the `register()` method of a Service Provider t
 
 > Which of the following is NOT an official Laravel Facade?
 
-A) `Auth`
-B) `Route`
-C) `Request`
-D) `User`
+- A) `Auth`
+- B) `Route`
+- C) `Request`
+- D) `User`
 
 ---
 **Explanation:**
@@ -388,10 +389,10 @@ D) `User`
 
 > If you have a Facade `MyFacade` and you call a method that does not exist on either the Facade or the underlying class, what error will be thrown?
 
-A) `\BadMethodCallException`
-B) `\ErrorException`
-C) `\ReflectionException`
-D) `\RuntimeException`
+- A) `\BadMethodCallException`
+- B) `\ErrorException`
+- C) `\ReflectionException`
+- D) `\RuntimeException`
 
 ---
 **Explanation:**
@@ -410,10 +411,10 @@ The flow is as follows:
 
 > What does the static method `Facade::clearResolvedInstances()` do?
 
-A) It clears all application cache data.
-B) It removes all instances that have been resolved and cached by the Facade class.
-C) It disconnects all active database connections.
-D) It clears the authenticated user's session.
+- A) It clears all application cache data.
+- B) It removes all instances that have been resolved and cached by the Facade class.
+- C) It disconnects all active database connections.
+- D) It clears the authenticated user's session.
 
 ---
 **Explanation:**
@@ -428,10 +429,10 @@ To optimize performance, once a Facade resolves its underlying instance from the
 
 > Is it possible to have a Facade that resolves to a primitive value (like a string or an array) instead of an object?
 
-A) No, Facades must always resolve to an object instance.
-B) Yes, but only if the value is registered as a singleton in the container.
-C) Yes, but you would be unable to call any methods on it, as it is not an object.
-D) No, the Service Container can only store objects.
+- A) No, Facades must always resolve to an object instance.
+- B) Yes, but only if the value is registered as a singleton in the container.
+- C) Yes, but you would be unable to call any methods on it, as it is not an object.
+- D) No, the Service Container can only store objects.
 
 ---
 **Explanation:**
@@ -446,10 +447,10 @@ Laravel's Service Container can store any type of value, including strings, arra
 
 > What is the relationship between Laravel Facades and the original "Facade" design pattern (GoF - Gang of Four)?
 
-A) They are exactly the same thing.
-B) They have no relationship; the name is just a coincidence.
-C) Laravel Facades are an implementation of the Facade pattern, as they provide a simplified, unified interface to a more complex subsystem (the Service Container and the service classes).
-D) The original Facade pattern deals with static interfaces, while Laravel Facades deal with dynamic instances.
+- A) They are exactly the same thing.
+- B) They have no relationship; the name is just a coincidence.
+- C) Laravel Facades are an implementation of the Facade pattern, as they provide a simplified, unified interface to a more complex subsystem (the Service Container and the service classes).
+- D) The original Facade pattern deals with static interfaces, while Laravel Facades deal with dynamic instances.
 
 ---
 **Explanation:**
@@ -474,10 +475,10 @@ Laravel Facades are indeed an application of the Facade design pattern. The orig
 > ```
 > Why will this test, despite looking correct, likely fail to verify that a route was defined?
 
-A) The `get` method on the `Route` Facade cannot be mocked.
-B) The `Route` Facade is resolved very early in the framework's lifecycle, before the test's mock is applied, causing the actual call to be missed.
-C) `shouldReceive` only works for methods that return a value, and `Route::get` returns `void`.
-D) The `with()` method is not compatible with the `Route` Facade.
+- A) The `get` method on the `Route` Facade cannot be mocked.
+- B) The `Route` Facade is resolved very early in the framework's lifecycle, before the test's mock is applied, causing the actual call to be missed.
+- C) `shouldReceive` only works for methods that return a value, and `Route::get` returns `void`.
+- D) The `with()` method is not compatible with the `Route` Facade.
 
 ---
 **Explanation:**
